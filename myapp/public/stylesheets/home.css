@@ -1,0 +1,322 @@
+/* Estilos para el contenedor del encabezado */
+header {
+    background-color: #cfcfcf;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para los títulos de destino */
+.titulo-dest {
+    font-size: 2em;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+}
+
+.card {
+    height: 800px; /* Ajusta la altura de la tarjeta según tu preferencia */
+}
+
+/* Estilos para las tarjetas */
+.card-instalaciones {
+    width: 100%;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #333;
+}
+
+/* Efecto de escala al pasar el mouse sobre las tarjetas */
+.card-instalaciones:hover {
+    transform: scale(1.05);
+}
+
+/* Estilos para el cuerpo de las tarjetas */
+.card-body {
+    background-color: rgb(222, 222, 222);
+    text-decoration: none;
+    width: 100%;
+    padding: 20px; /* Ajusta el relleno del cuerpo de la tarjeta según sea necesario */
+}
+
+/* Estilos para las imágenes en las tarjetas */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Estilos para el texto de las tarjetas, truncando el texto largo */
+.card-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Estilos para la parte superior de las tarjetas */
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-small {
+    width: 100px; /* o el tamaño que desees */
+    height: 100px; /* o el tamaño que desees */
+    background-color: #f0f0f0; /* o cualquier otro color de fondo que desees */
+    font-size: 2em;
+}
+
+/* Efecto de escala al pasar el mouse sobre las tarjetas */
+.card-small:hover {
+    transform: scale(1.05);
+}
+
+.img {
+    width: 20em;
+    height: auto;
+    padding: 10px 10px;
+    float: right;
+}
+
+/* Estilos para los botones de perfil */
+.botonperfil {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+/* Estilos para la barra de búsqueda */
+.buscador {
+    display: flex;
+    width: 100%;
+    margin-right: 50px;
+}
+
+/* Estilos para el cuadro de búsqueda */
+.caja {
+    border: 2px solid #000000;
+    border-radius: 5px;
+}
+
+/* Estilos para el botón de búsqueda */
+.boton {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+main {
+    flex: 1; /* Esto hace que el contenedor principal (main) ocupe todo el espacio restante */
+}
+
+/* Estilos para el pie de página */
+footer {
+    background-color: #555555;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Estilos para los botones de navegación */
+.botonnav {
+    background-color: #b4b4b4;
+    color: #fff;
+    transition: background-color 0.3s;
+    border: none;
+    padding: 10px 20px;
+}
+
+.navbar{
+    background-color:#b4b4b4;
+}
+
+/* Estilos para los botones del nav */
+.botonnav:hover{
+        background-color: #333;
+}
+
+/* Estilos para la barra de navegación */
+nav {
+    text-align: center;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+/* Estilos para los elementos <a> en la barra de navegación */
+nav a {
+    color: #000000;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+/* Estilos para el botón de menú en pantallas pequeñas */
+.navbar-toggler {
+    background-color: #141414;
+    border: none;
+}
+
+/* Estilos para el icono de menú en el botón */
+.navbar-toggler-icon {
+    background-color: #000000;
+}
+
+/* Estilos para los elementos del menú desplegable */
+.navbar-nav .nav-item {
+    text-align: center;
+}
+
+/* Estilos para los botones del nav en el menú desplegable */
+.navbar-nav .nav-link {
+    text-align: center;
+}
+
+/* Estilos para hover en los elementos del menú */
+.navbar-nav .nav-link:hover {
+    background-color: #333;
+}
+
+/* Estilos adicionales para hacer más bonito el menú */
+@media (min-width: 992px) {
+    nav a {
+        width: auto; /* Permitir que cada elemento del menú tenga su propio ancho */
+        box-sizing: content-box; /* Evitar que el ancho incluya el relleno y el borde */
+        text-align: center; /* Alinear texto al centro */
+    }
+
+    .navbar-nav {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .navbar-nav .nav-item {
+        flex: 1;
+    }
+}
+
+
+/* Estilos para las tarjetas en la vista de rejilla */
+.destinos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    text-decoration: none;
+}
+
+/* Estilo para eliminar subrayado de los enlaces */
+.decoration {
+    text-decoration: none;
+}
+
+.avatar-container {
+    text-align: center;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 120px; /* Ajusta el tamaño según sea necesario */
+    height: 120px; /* Ajusta el tamaño según sea necesario */
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.main-color{
+    padding: 20px;
+    background-color: #e2f5ff;
+}
+
+.main-fondo::before{
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/61f5f63a54672.jpg'); /* Reemplaza con la ruta de tu imagen */
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir completamente el área sin distorsionarla */
+    background-position: center;
+    background-repeat: no-repeat; /* Evita que la imagen de fondo se repita */
+    opacity: 0.8; /* Ajusta este valor para cambiar la opacidad del fondo */
+    z-index: -1; /* Coloca el fondo detrás de otros elementos */
+}
+
+.email-mensaje {
+    display: none;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.email-asunto.active .email-mensaje {
+    display: block;
+}
+
+.mensaje {
+    font-size: 16px; /* Tamaño de fuente del mensaje */
+    color: #333; /* Color del texto del mensaje */
+    margin-top: 10px; /* Espaciado superior del mensaje */
+    border: 1px solid #ccc; /* Borde del mensaje */
+    border-radius: 5px; /* Borde redondeado del mensaje */
+    background-color: #f9f9f9; /* Color de fondo del mensaje */
+}
+
+.reserva-container {
+    max-height: 360px;
+    overflow-y: auto;
+}
+
+/* Estilos para las migas de pan (breadcrumb) */
+.breadcrumb-item {
+    color: #3a3c3e;
+}
+
+/* Estilos para los enlaces dentro de las migas de pan */
+.breadcrumb-item a {
+    color: #000000;
+    text-decoration: none;
+}
+
+/* Estilos para el elemento activo en las migas de pan */
+.breadcrumb-item.active {
+    color: #000000;
+}
+
+/* Estilos para el contenedor de las migas de pan */
+.breadcrumb-nav {
+    background-color: #fdfeff;
+}
+
+/* Estilos para las migas de pan en general */
+.breadcrumb {
+    margin-left: 20px;
+}
+
+.fixed-width-card {
+    width: 600px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
+    height: 50px;
+}
+

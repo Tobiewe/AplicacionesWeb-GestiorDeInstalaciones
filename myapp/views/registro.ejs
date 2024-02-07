@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Configuración del juego de caracteres y la escala de la vista -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Enlaces a hojas de estilo externas -->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+    <!-- Enlace a la hoja de estilo de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Enlace a la hoja de estilos de Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- Título de la página y favicon -->
+    <title>UCM | Registro</title>
+    <link rel="icon" href="/images/icon.png" type="image/x-icon">
+</head>
+
+<body class="bg-light">
+    <!-- Contenedor principal -->
+    <main class=" main-fondo">
+        <div class="container-fluid d-flex justify-content-center align-content-center p-5">
+            <div class="col-md-6 border border-1 border-dark">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Formulario de registro -->
+                        <h5 class="card-title text-center">Registrarse</h5>
+                        <form action="/registrar" method="post" class="general" enctype="multipart/form-data">
+                            <% if (mensaje==null) { %>
+                                <% } else if(mensaje) { %>
+                                    <div class="alert alert-danger alert-sm py-1 bg-gradient text-dark" role="alert">
+                                        <%= mensaje %>
+                                    </div>
+                                    <% } %>
+                                        <div class="row">
+                                            <div class="col mb-2">
+                                                <label for="nombre" class="form-label">Nombre</label>
+                                                <input type="text" class="form-control" id="nombre" name="nombre" required>
+                                            </div>
+                                            <div class="col mb-2">
+                                                <label for="apellido1" class="form-label">Primer Apellido</label>
+                                                <input type="text" class="form-control" id="apellido1" name="apellido1" required>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col mb-2">
+                                                <div class="mb-2">
+                                                    <label for="apellido2" class="form-label">Segundo Apellido</label>
+                                                    <input type="text" class="form-control" id="apellido2" name="apellido2" required>
+                                                </div>
+                                            </div>
+                                            <div class="col mb-2">
+                                                <div class="mb-2">
+                                                    <label for="email" class="form-label">Correo Electrónico</label>
+                                                    <input type="email" class="form-control" id="email" name="email" required oninput="validateEmail(this)">
+                                                    <div id="emailError" style="color: red;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="mb-2">
+                                                <label for="facultad" class="form-label">Facultad</label>
+                                                <select class="form-select" id="facultad" name="facultad" required>
+                                                    <option value="" selected>Selecciona una facultad</option>
+                                                    <% for (let i=0; i < facultades.length; i++) { %>
+                                                        <option value="<%= facultades[i].facultad %>" <% if (facultades[i].facultad===facultad) { %>selected<% } %>><%= facultades[i].facultad %>
+                                                        </option>
+                                                        <% } %>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col mb-2">
+                                                <div class="mb-2">
+                                                    <label for="curso" class="form-label">Curso</label>
+                                                    <input type="number" class="form-control" id="curso" name="curso" required min="1">
+                                                </div>
+                                            </div>
+                                            <div class="col mb-2">
+                                                <div class="mb-2">
+                                                    <label for="grupo" class="form-label">Grupo</label>
+                                                    <input type="text" class="form-control" id="grupo" name="grupo" required oninput="validateGroup(this)">
+                                                    <div id="groupError" style="color: red;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="mb-2 form-group">
+                                                <label for="password">Contraseña</label>
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control" id="password" name="password" required oninput="validatePassword(this)">
+                                                    <button type="button" class="btn btn-outline-dark" id="showPasswordBtn">Mostrar</button>
+                                                    <div id="passwordError" style="color: red;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-2 form-group">
+                                                <label for="confirmPassword">Confirmar Contraseña</label>
+                                                <div class="input-group">
+                                                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required oninput="validateConfirmPassword(this)">
+                                                    <button type="button" class="btn btn-outline-dark" id="showPasswordBtn2">Mostrar</button>
+                                                </div>
+                                                <div id="confirmPasswordError" style="color: red;"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col mb-2">
+                                                <div class="mb-3">
+                                                    <label for="imagen" class="form-label">Imagen Perfil (solo JPEG, tamaño máximo 2MB)</label>
+                                                    <input class="form-control" type="file" id="imagen" name="imagen" accept="image/jpeg" size="2000000">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-grid">
+                                            <input type="hidden" name="facultades" value="<%= JSON.stringify(facultades) %>">
+                                            <button type="submit" class="btn btn-dark">Registrarse</button>
+                                        </div>
+                                        <br>
+                        </form>
+                        <!-- Enlace para iniciar sesión -->
+                        <div class="text-center">
+                            <p>¿Ya tienes cuenta? <a href="/">Inicia sesión</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Scripts de JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="/javascripts/registro.js"></script>
+</body>
+
+</html>
